@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yousif Mubashir | Data Analyst</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b1120;
+            color: #e5e7eb;
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1100px, 90%);
+            margin: auto;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(11, 17, 32, 0.92);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #1f2937;
+        }
+
+        .nav-content {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #9ca3af;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 620px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #1f2937;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .eyebrow {
+            color: #60a5fa;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            font-size: clamp(45px, 7vw, 78px);
+            line-height: 1.05;
+            color: white;
+            margin-bottom: 25px;
+        }
+
+        h1 span {
+            color: #60a5fa;
+        }
+
+        .hero-text {
+            color: #9ca3af;
+            font-size: 19px;
+            max-width: 680px;
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            padding: 13px 22px;
+            border-radius: 7px;
+            border: 1px solid #374151;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .button.primary {
+            background: #2563eb;
+            border-color: #2563eb;
+            color: white;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 34px;
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        .section-subtitle {
+            color: #9ca3af;
+            margin-bottom: 45px;
+        }
+
+        /* About */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 60px;
+        }
+
+        .about-text {
+            color: #b6beca;
+            font-size: 17px;
+        }
+
+        .about-text p {
+            margin-bottom: 18px;
+        }
+
+        .info-box {
+            background: #111827;
+            border: 1px solid #1f2937;
+            padding: 28px;
+            border-radius: 12px;
+        }
+
+        .info-item {
+            margin-bottom: 20px;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-label {
+            color: #6b7280;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-value {
+            color: white;
+            margin-top: 3px;
+        }
+
+        /* Projects */
+        .project-card {
+            background: #111827;
+            border: 1px solid #1f2937;
+            border-radius: 14px;
+            padding: 35px;
+            transition: 0.25s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: #374151;
+        }
+
+        .project-number {
+            color: #60a5fa;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .project-card h3 {
+            color: white;
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+
+        .project-card p {
+            color: #9ca3af;
+            margin-bottom: 25px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: #1f2937;
+            color: #cbd5e1;
+            padding: 6px 11px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+
+        /* Skills */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill {
+            padding: 12px 18px;
+            background: #111827;
+            border: 1px solid #1f2937;
+            border-radius: 7px;
+            color: #d1d5db;
+        }
+
+        /* Contact */
+        .contact-box {
+            background: #111827;
+            border: 1px solid #1f2937;
+            border-radius: 14px;
+            padding: 45px;
+            text-align: center;
+        }
+
+        .contact-box p {
+            color: #9ca3af;
+            margin: 12px auto 28px;
+            max-width: 600px;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid #1f2937;
+            padding: 30px 0;
+            color: #6b7280;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        /* Mobile */
+        @media (max-width: 700px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                min-height: 550px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            section {
+                padding: 70px 0;
+            }
+
+            .project-card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-content">
+            <div class="logo">Yousif<span>.</span></div>
+
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <!-- Hero -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+
+                <div class="eyebrow">Data Analyst</div>
+
+                <h1>
+                    Turning data into
+                    <span>insights.</span>
+                </h1>
+
+                <p class="hero-text">
+                    Mathematics & Computer Science student focused on
+                    data analysis, problem solving, and turning complex
+                    datasets into clear and actionable insights.
+                </p>
+
+                <div class="buttons">
+                    <a href="#projects" class="button primary">
+                        View My Projects
+                    </a>
+
+                    <a href="#contact" class="button">
+                        Contact Me
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+
+    <!-- About -->
+    <section id="about">
+        <div class="container">
+
+            <h2 class="section-title">About Me</h2>
+
+            <p class="section-subtitle">
+                A little about who I am and what I do.
+            </p>
+
+            <div class="about-grid">
+
+                <div class="about-text">
+                    <p>
+                        I am a Mathematics and Computer Science student
+                        interested in data analysis and analytical problem
+                        solving.
+                    </p>
+
+                    <p>
+                        I enjoy working with messy real-world data,
+                        identifying patterns, investigating inconsistencies,
+                        and transforming data into information that can
+                        support better decisions.
+                    </p>
+
+                    <p>
+                        My experience includes working with Excel,
+                        data cleaning, sales analysis, inventory analysis,
+                        and developing analytical solutions for real
+                        business problems.
+                    </p>
+                </div>
+
+                <div class="info-box">
+
+                    <div class="info-item">
+                        <div class="info-label">Field</div>
+                        <div class="info-value">Data Analytics</div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-label">Education</div>
+                        <div class="info-value">
+                            Mathematics & Computer Science
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-label">Based in</div>
+                        <div class="info-value">Iraq</div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Projects -->
+    <section id="projects">
+        <div class="container">
+
+            <h2 class="section-title">Projects</h2>
+
+            <p class="section-subtitle">
+                Selected analytical projects and case studies.
+            </p>
+
+            <div class="project-card">
+
+                <div class="project-number">01 — CASE STUDY</div>
+
+                <h3>
+                    Inventory Optimization & Demand Planning
+                </h3>
+
+                <p>
+                    Developed an inventory analysis and reorder
+                    methodology for a printing and packaging company.
+                    The project involved cleaning inconsistent ERP data,
+                    analyzing sales patterns, classifying products using
+                    ABC analysis, and developing a data-driven approach
+                    for determining reorder quantities.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">Excel</span>
+                    <span class="tag">Data Cleaning</span>
+                    <span class="tag">Inventory Analysis</span>
+                    <span class="tag">ABC Analysis</span>
+                    <span class="tag">Demand Analysis</span>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Skills -->
+    <section id="skills">
+        <div class="container">
+
+            <h2 class="section-title">Skills</h2>
+
+            <p class="section-subtitle">
+                Tools and areas I work with.
+            </p>
+
+            <div class="skills">
+
+                <div class="skill">Excel</div>
+                <div class="skill">Data Cleaning</div>
+                <div class="skill">Data Analysis</div>
+                <div class="skill">Statistics</div>
+                <div class="skill">Python</div>
+                <div class="skill">SQL</div>
+                <div class="skill">Data Visualization</div>
+                <div class="skill">Problem Solving</div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container">
+
+            <div class="contact-box">
+
+                <h2 class="section-title">
+                    Let's Connect
+                </h2>
+
+                <p>
+                    Interested in data analysis, research,
+                    and solving real-world problems with data.
+                </p>
+
+                <div class="buttons" style="justify-content:center;">
+
+                    <a href="mailto:YOUR_EMAIL@gmail.com"
+                       class="button primary">
+                        Email Me
+                    </a>
+
+                    <a href="https://www.linkedin.com/"
+                       class="button">
+                        LinkedIn
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            © 2026 Yousif Al-Shaikh. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
