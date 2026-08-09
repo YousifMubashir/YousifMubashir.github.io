@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Inventory Optimization | Yousif Al Shaikh Ali</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0b1120;
+    color: #e5e7eb;
+    line-height: 1.75;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    width: min(1000px, 90%);
+    margin: auto;
+}
+
+nav {
+    border-bottom: 1px solid #1f2937;
+    padding: 22px 0;
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: white;
+    font-weight: bold;
+}
+
+.back {
+    color: #60a5fa;
+    font-size: 14px;
+}
+
+header {
+    padding: 90px 0 70px;
+    border-bottom: 1px solid #1f2937;
+}
+
+.eyebrow {
+    color: #60a5fa;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+h1 {
+    color: white;
+    font-size: clamp(38px, 6vw, 62px);
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.lead {
+    color: #9ca3af;
+    font-size: 19px;
+    max-width: 760px;
+}
+
+section {
+    padding: 70px 0;
+    border-bottom: 1px solid #1f2937;
+}
+
+h2 {
+    color: white;
+    font-size: 30px;
+    margin-bottom: 18px;
+}
+
+h3 {
+    color: white;
+    font-size: 20px;
+    margin: 30px 0 10px;
+}
+
+p {
+    color: #aeb7c4;
+    margin-bottom: 18px;
+}
+
+ul {
+    margin: 15px 0 20px 22px;
+    color: #aeb7c4;
+}
+
+li {
+    margin-bottom: 7px;
+}
+
+.highlight {
+    background: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 12px;
+    padding: 28px;
+    margin-top: 30px;
+}
+
+.formula {
+    background: #0f172a;
+    border-left: 3px solid #60a5fa;
+    padding: 20px;
+    margin: 20px 0;
+    color: #e5e7eb;
+    font-family: monospace;
+    font-size: 15px;
+}
+
+.example-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.example-item {
+    background: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.example-label {
+    color: #6b7280;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.example-value {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 25px;
+}
+
+.tag {
+    background: #1f2937;
+    color: #cbd5e1;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.note {
+    color: #6b7280;
+    font-size: 13px;
+    font-style: italic;
+}
+
+footer {
+    padding: 30px 0;
+    color: #6b7280;
+    text-align: center;
+    font-size: 13px;
+}
+
+@media (max-width: 700px) {
+    .example-grid {
+        grid-template-columns: 1fr;
+    }
+
+    header {
+        padding: 65px 0 50px;
+    }
+
+    section {
+        padding: 55px 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="container nav-content">
+        <div class="logo">Yousif Al Shaikh Ali</div>
+        <a href="index.html" class="back">← Back to Portfolio</a>
+    </div>
+</nav>
+
+
+<header>
+    <div class="container">
+
+        <div class="eyebrow">Data Analysis Case Study</div>
+
+        <h1>
+            Inventory Optimization & Demand Planning
+        </h1>
+
+        <p class="lead">
+            Developing a data-driven approach to inventory planning,
+            reorder quantities, product prioritization, and truck
+            capacity utilization for a packing and packaging company.
+        </p>
+
+        <div class="tags">
+            <span class="tag">Excel</span>
+            <span class="tag">Data Cleaning</span>
+            <span class="tag">Inventory Analysis</span>
+            <span class="tag">ABC Analysis</span>
+            <span class="tag">Demand Analysis</span>
+        </div>
+
+    </div>
+</header>
+
+
+<section>
+    <div class="container">
+
+        <h2>Overview</h2>
+
+        <p>
+            A packing and packaging company was facing difficulties
+            determining appropriate reorder quantities for its products.
+            Some products were being overstocked while others could run
+            out relatively quickly.
+        </p>
+
+        <p>
+            The objective was to analyze historical sales and inventory
+            data and develop a more structured approach to inventory
+            planning and reorder decisions.
+        </p>
+
+        <div class="highlight">
+            <strong>Scope:</strong> Approximately five months of historical
+            data, analyzed using Microsoft Excel.
+        </div>
+
+    </div>
+</section>
+
+
+<section>
+    <div class="container">
+
+        <h2>The Business Problem</h2>
+
+        <p>
+            The company did not have a reliable method for determining
+            how much of each product should be ordered.
+        </p>
+
+        <p>
+            The main challenge was finding a balance between avoiding
+            unnecessary inventory accumulation and maintaining enough
+            stock to satisfy demand.
+        </p>
+
+    </div>
+</section>
+
+
+<section>
+    <div class="container">
+
+        <h2>Data Challenges</h2>
+
+        <p>
+            The analysis began with a difficult data extraction and
+            preparation process. The ERP system did not provide the
+            required information in a clean analytical structure.
+        </p>
+
+        <ul>
+            <li>Sales data was separated into multiple monthly files.</li>
+            <li>Sales records did not contain a usable date field.</li>
+            <li>Sales data did not contain the required product classification.</li>
+            <li>The ERP filtering functionality was not sufficient for the required analysis.</li>
+            <li>Some products appeared multiple times.</li>
+            <li>Some similar product names represented different products.</li>
+            <li>Some products were no longer active.</li>
+            <li>Negative sales values required investigation.</li>
+        </ul>
+
+        <p>
+            The raw dataset contained approximately 1,300 records.
+            After filtering and cleaning, the analysis focused on more
+            than 330 relevant records.
+        </p>
+
+    </div>
+</section>
+
+
+<section>
+    <div class="container">
+
+        <h2>Data Cleaning & Validation</h2>
+
+        <p>
+            Because the sales data did not contain the required product
+            classification, the inventory dataset was used to identify
+            General Prints and separate them from Special Prints.
+        </p>
+
+        <p>
+            Duplicate product records were consolidated where appropriate,
+            while discontinued and irrelevant products were removed from
+            the analysis.
+        </p>
+
+        <p>
+            Negative sales values were not simply deleted. They were
+            investigated with a company representative and confirmed
+            to represent returned products.
+        </p>
+
+        <p>
+            This process highlighted an important principle of the project:
+            data cleaning required business context, not only technical
+            manipulation of spreadsheets.
+        </p>
+
+    </div>
+</section>
+
+
+<section>
+    <div class="container">
+
+        <h2>Demand & Reorder Model</h2>
+
+        <p>
+            After cleaning the data, historical sales were analyzed to
+            estimate product demand and support reorder decisions.
+        </p>
+
+        <p>
+            The available dataset was used to calculate recent sales
+            averages. For future system implementation, I recommended
+            using Average Daily Demand so the model could adapt more
+            effectively to recent sales activity.
+        </p>
+
+        <div class="formula">
+            Required Stock = Average Daily Demand × Coverage Days
+            <br><br>
+            Reorder Quantity = Required Stock − Current Inventory
+        </div>
+
+        <p>
+            Coverage periods were adjusted according to product
+            importance rather than applying one identical target to
+            every product.
+        </p>
+
+        <ul>
+            <li><strong>Category A:</strong> approximately 60 days</li>
+            <li><strong>Category B:</strong> approximately 30–45 days</li>
+            <li><strong>Category C:</strong> approximately 30 days</li>
+        </ul>
+
+    </div>
+</section>
+
+
+<section>
+    <div class="container">
+
+        <h2>ABC Analysis</h2>
+
+        <p>
+            Products were classified using ABC Analysis based on their
+            contribution to total sales.
+        </p>
+
+        <p>
+            Products were ranked according to their percentage of total
+            sales and then classified according to their cumulative
+            contribution.
+        </p>
+
+        <p>
+            This allowed the company to prioritize inventory management
+            according to actual business importance instead of treating
+            every product equally.
+        </p>
+
+    </div>
+</section>
+
+
+<section>
+    <div class="container">
+
+        <h2>Truck Capacity Optimization</h2>
+
+        <p>
+            Inventory planning also had to account for a practical
+            logistical constraint: the standard truck could carry
+            approximately 1,500 cartons.
+        </p>
+
+        <p>
+            Simply filling unused capacity with arbitrary products could
+            result in unnecessary inventory. To address this, I calculated
+            a statistical weight for each product based on its share of
+            total sales during the most recent 60-day period.
+        </p>
+
+        <div class="formula">
+            Product Weight = Product Sales ÷ Total Sales
+        </div>
+
+        <p>
+            Products with stronger sales performance therefore received
+            a greater share of any remaining truck capacity.
+        </p>
+
+    </div>
+</section>
+
+
+<section>
+    <div class="container">
+
+        <h2>Unexpected Order Scenario</h2>
+
+        <p>
+            The normal ordering process was designed around the standard
+            truck capacity, but unexpected customer requirements could
+            require a more flexible approach.
+        </p>
+
+        <p>
+            I proposed an "Unexpected Order" option supported by a
+            smaller 500-carton truck. This would allow the company to
+            respond to urgent customer requirements without unnecessarily
+            filling a larger truck.
+        </p>
+
+        <p>
+            Where additional capacity remained necessary, the remaining
+            space could be allocated using the statistical product
+            weights.
+        </p>
+
+    </div>
+</section>
+
+
+<section>
+    <div class="container">
+
+        <h2>Anomaly Detection & Business Validation</h2>
+
+        <p>
+            During the review of the cleaned data, I identified a product
+            whose sales and inventory behavior appeared inconsistent
+            with the other General Print products.
+        </p>
+
+        <p>
+            Rather than assuming the data was correct, I investigated the
+            discrepancy with a company representative.
+        </p>
+
+        <p>
+            The company confirmed that the product had been incorrectly
+            classified as a General Print in the ERP system. It was
+            actually a Special Print.
+        </p>
+
+        <div class="highlight">
+            <strong>Potential financial impact:</strong>
+            the incorrect classification could have resulted in an
+            unnecessary purchase of approximately <strong>30 million IQD</strong>
+            under the existing automated purchasing logic.
+        </div>
+
+        <p>
+            This finding demonstrated the importance of validating
+            analytical results against real business context.
+        </p>
+
+    </div>
+</section>
+
+
+<section>
+    <div class="container">
+
+        <h2>Illustrative Reorder Calculation</h2>
+
+        <p>
+            The following hypothetical example demonstrates how the
+            proposed reorder methodology works.
+        </p>
+
+        <div class="example-grid">
+
+            <div class="example-item">
+                <div class="example-label">Category</div>
+                <div class="example-value">B</div>
+            </div>
+
+            <div class="example-item">
+                <div class="example-label">Current Inventory</div>
+                <div class="example-value">40 cartons</div>
+            </div>
+
+            <div class="example-item">
+                <div class="example-label">Daily Demand</div>
+                <div class="example-value">3 cartons</div>
+            </div>
+
+        </div>
+
+        <p>
+            Assuming a target coverage period of 45 days:
+        </p>
+
+        <div class="formula">
+            Required Stock = 3 × 45 = 135 cartons
+            <br><br>
+            Reorder Quantity = 135 − 40 = 95 cartons
+        </div>
+
+        <p>
+            The model would therefore recommend ordering
+            <strong>95 cartons</strong> to restore the product to the
+            desired coverage level.
+        </p>
+
+        <p class="note">
+            This is a hypothetical example created to demonstrate the
+            methodology and does not represent actual company data.
+        </p>
+
+    </div>
+</section>
+
+
+<section>
+    <div class="container">
+
+        <h2>Business Recommendations</h2>
+
+        <ul>
+            <li>Improve the structure and reliability of ERP data exports.</li>
+            <li>Use demand-based reorder calculations.</li>
+            <li>Apply different coverage targets based on product importance.</li>
+            <li>Use ABC classification to prioritize inventory management.</li>
+            <li>Use sales-based weights when allocating remaining truck capacity.</li>
+            <li>Introduce an alternative process for unexpected customer orders.</li>
+            <li>Validate unusual analytical results against business context.</li>
+        </ul>
+
+    </div>
+</section>
+
+
+<section>
+    <div class="container">
+
+        <h2>Implementation</h2>
+
+        <p>
+            The analysis and proposed inventory logic were presented to
+            company management.
+        </p>
+
+        <p>
+            The resulting algorithm was subsequently sent to the company's
+            ERP software provider for integration into the system.
+        </p>
+
+        <p>
+            At the time of this case study, implementation was still in
+            progress, so no unsupported claims about final savings or
+            operational improvements are made.
+        </p>
+
+    </div>
+</section>
+
+
+<section>
+    <div class="container">
+
+        <h2>Tools</h2>
+
+        <div class="tags">
+            <span class="tag">Microsoft Excel</span>
+            <span class="tag">Data Cleaning</span>
+            <span class="tag">Data Analysis</span>
+            <span class="tag">Statistics</span>
+            <span class="tag">ABC Analysis</span>
+            <span class="tag">Inventory Planning</span>
+        </div>
+
+    </div>
+</section>
+
+
+<footer>
+    © 2026 Yousif Al Shaikh Ali
+</footer>
+
+</body>
+</html>
